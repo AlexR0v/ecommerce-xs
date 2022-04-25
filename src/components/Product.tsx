@@ -13,7 +13,7 @@ const Product: FC<IProduct> = ({ product }) => {
       <Link href={`/product/${product.slug.current}`}>
         <div className='product-card'>
           <img
-            src={urlFor(product.image[0].asset._ref) as unknown as string}
+            src={`${urlFor(product.image[0].asset._ref)}`}
             width={250}
             height={250}
             className='product-image'

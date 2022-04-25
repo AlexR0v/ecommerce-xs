@@ -1,13 +1,18 @@
-import { FC }                                from 'react'
-import { AiFillInstagram, AiOutlineTwitter } from 'react-icons/ai'
+import { FC }           from 'react'
+import { AiFillGithub } from 'react-icons/ai'
 
 const Footer: FC = () => {
   return (
     <div className='footer-container'>
-      <p>2022 Bitss All rights reserverd</p>
+      <p>{new Date().getFullYear()} AlexR0v. All rights reserverd</p>
       <p className='icons'>
-        <AiFillInstagram />
-        <AiOutlineTwitter />
+        <a
+          target='_blank'
+          rel='noreferrer'
+          href='https://github.com/AlexR0v'
+        >
+          <AiFillGithub />
+        </a>
       </p>
     </div>
   )

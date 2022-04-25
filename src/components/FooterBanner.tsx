@@ -30,7 +30,7 @@ const FooterBanner: FC<Partial<HeroBannerProps>> = ({ footerBanner }) => {
         </div>
 
         <img
-          src={urlFor(footerBanner.image) as unknown as string}
+          src={`${urlFor(footerBanner.image)}`}
           className='footer-banner-image'
           alt='banner'
         />

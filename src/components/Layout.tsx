@@ -1,6 +1,7 @@
 import Head              from 'next/head'
 import { FC, ReactNode } from 'react'
 import Footer            from './Footer'
+import Navbar            from './Navbar'
 
 interface LayoutProps {
   children: ReactNode
@@ -13,7 +14,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <title>Bitss best store</title>
       </Head>
       <header>
-        {/*<Navbar />*/}
+        <Navbar />
       </header>
       <main className='main-container'>
         {children}
