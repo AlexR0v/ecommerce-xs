@@ -1,6 +1,7 @@
 import { FC, useState }                                             from 'react'
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from 'react-icons/ai'
 import { Product }                                                  from '../../components'
+import { useStateContext }                                          from '../../context/StateContext'
 import { client, urlFor }                                           from '../../lib/client'
 import { Product as ProductType }                                   from '../../types/index'
 
@@ -12,6 +13,15 @@ interface ProductDetails {
 const ProductDetails: FC<ProductDetails> = ({ product, products }) => {
   const { image, name, details, price } = product
   const [index, setIndex] = useState(0)
+
+  const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext()
+
+  const handleBuyNow = () => {
+    if (onAdd) {onAdd(product, qty ?? 1)}
+
+    if (setShowCart) {setShowCart(true)}
+  }
+
   return (
     <div>
       <div className='product-detail-container'>
@@ -58,12 +68,12 @@ const ProductDetails: FC<ProductDetails> = ({ product, products }) => {
             <p className='quantity-desc'>
               <span
                 className='minus'
-                //onClick={decQty}
+                onClick={decQty}
               ><AiOutlineMinus /></span>
-              {/*<span className='num'>{qty}</span>*/}
+              <span className='num'>{qty}</span>
               <span
                 className='plus'
-                //onClick={incQty}
+                onClick={incQty}
               ><AiOutlinePlus /></span>
             </p>
           </div>
@@ -71,13 +81,13 @@ const ProductDetails: FC<ProductDetails> = ({ product, products }) => {
             <button
               type='button'
               className='add-to-cart'
-              //onClick={() => onAdd(product, qty)}
+              onClick={() => onAdd ? onAdd(product, qty ?? 1) : null}
             >Add to Cart
             </button>
             <button
               type='button'
               className='buy-now'
-              //onClick={handleBuyNow}
+              onClick={handleBuyNow}
             >Buy Now
             </button>
           </div>

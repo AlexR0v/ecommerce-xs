@@ -24,6 +24,7 @@ export interface Product {
   image: Image[],
   name: string
   price: number,
+  quantity: number,
   slug: ProductSlug
 }
 
